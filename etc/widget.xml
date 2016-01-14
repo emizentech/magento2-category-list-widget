@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Magento/Widget/etc/widget.xsd">
+	<widget id="emizentech_categorywidget" class="Emizentech\CategoryWidget\Block\Widget\CategoryWidget">
+		<label translate="true">Category List Widget</label>
+		<description>Store Default 1st level Category List Widget</description>
+		<parameters>
+			<parameter name="image" xsi:type="select" required="true" visible="true">
+                <label translate="true">Image Type</label>
+                <options>
+                    <option name="default" value="no-image" selected="true">
+                        <label translate="true">No Image</label>
+                    </option>
+                    <option name="image" value="image">
+                        <label translate="">With Image</label>
+                    </option>
+                </options>
+            </parameter>
+			<parameter name="imagewidth" xsi:type="text"  visible="true" sort_order="2" value="250">
+				<label translate="true">Image Width</label>
+				<description translate="true">Enter Image width Ex. 250 , do not suffix with px</description>
+			</parameter>
+			<parameter name="imageheight" xsi:type="text"  visible="true" sort_order="3" value="250">
+				<label translate="true">Image Height</label>
+				<description translate="true">Enter Image Height Ex. 250 , do not suffix with px</description>
+			</parameter>
+			<parameter name="parentcat" xsi:type="text"  visible="true" sort_order="10">
+				<label translate="true">Specific Parent Category ID</label>
+				<description translate="true">Default Category of Current Store will be used in case of Blank</description>
+			</parameter>
+		</parameters>
+	</widget>
+</widgets>
