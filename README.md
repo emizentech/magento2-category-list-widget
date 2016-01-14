@@ -1,5 +1,14 @@
 # magento2-category-list-widget
 
+#Features
+<ul>
+<li>Add Category List Any Where</li>
+<li>Automatic Pick Default Store Category as Parent</li>
+<li>Category Image into List</li>
+<li>Can Manage Image Size</li>
+<li>Can Assign Custom Parent Category</li>
+</ul>
+
 <h2>Composer Installation Instructions</h2>
 Add GIT Repository to composer
 <pre>
