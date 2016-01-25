@@ -11,15 +11,15 @@
                         <label translate="true">No Image</label>
                     </option>
                     <option name="image" value="image">
-                        <label translate="">With Image</label>
+                        <label translate="true">With Image</label>
                     </option>
                 </options>
             </parameter>
-			<parameter name="imagewidth" xsi:type="text"  visible="true" sort_order="2" value="250">
+			<parameter name="imagewidth" xsi:type="text"  visible="true" sort_order="2">
 				<label translate="true">Image Width</label>
 				<description translate="true">Enter Image width Ex. 250 , do not suffix with px</description>
 			</parameter>
-			<parameter name="imageheight" xsi:type="text"  visible="true" sort_order="3" value="250">
+			<parameter name="imageheight" xsi:type="text"  visible="true" sort_order="3">
 				<label translate="true">Image Height</label>
 				<description translate="true">Enter Image Height Ex. 250 , do not suffix with px</description>
 			</parameter>
