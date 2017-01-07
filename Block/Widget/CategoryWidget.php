@@ -10,7 +10,6 @@ class CategoryWidget extends \Magento\Framework\View\Element\Template implements
     */
     const DEFAULT_IMAGE_WIDTH = 250;
     const DEFAULT_IMAGE_HEIGHT = 250;
-    protected $_categoryHelper;
     protected $categoryFlatConfig;
     
     protected $topMenu;
@@ -18,30 +17,19 @@ class CategoryWidget extends \Magento\Framework\View\Element\Template implements
     
     /**
     * @param \Magento\Framework\View\Element\Template\Context $context
-    * @param \Magento\Catalog\Helper\Category $categoryHelper
     * @param array $data
     */
     public function __construct(
     
     \Magento\Framework\View\Element\Template\Context $context,
-    \Magento\Catalog\Helper\Category $categoryHelper,
     \Magento\Catalog\Model\Indexer\Category\Flat\State $categoryFlatState,
     \Magento\Catalog\Model\CategoryFactory $categoryFactory,
     \Magento\Theme\Block\Html\Topmenu $topMenu
     ) {
-        $this->_categoryHelper = $categoryHelper;
         $this->categoryFlatConfig = $categoryFlatState;
         $this->topMenu = $topMenu;
         $this->_categoryFactory = $categoryFactory;
         parent::__construct($context);
-    }
-
-    /**
-    * Return categories helper
-    */
-    public function getCategoryHelper()
-    {
-        return $this->_categoryHelper;
     }
     
     public function getCategoryModel($id)
@@ -74,8 +62,6 @@ class CategoryWidget extends \Magento\Framework\View\Element\Template implements
         $storecats = $category->getChildrenCategories();
         $storecats->addAttributeToSelect('image');
         return $storecats;
-        // $catCollection = $this->_categoryHelper->getStoreCategories($sorted , $asCollection, $toLoad);
-        // return $catCollection;
     }
     
     /**

@@ -1,33 +1,28 @@
 <?php
-$categories = $this->getCategoryCollection();
-$categoryHelper = $this->getCategoryHelper();
-$canshowImg = $this->canShowImage();
-$title = $block->getTitle() ? __($block->getTitle()) : 'Categories';
+	$categories = $this->getCategoryCollection();
+	$canShowImg = $this->canShowImage();
+	$title = $block->getTitle() ? __($block->getTitle()) : 'Categories';
 ?>
 <?php if ($title):?>
 <div class="block-title">
-	<strong><?php /* @escapeNotVerified */ echo $title; ?></strong>
+	<strong><?php echo $block->escapeHtml($title) ?></strong>
 </div>
 <?php endif ?>
 <div class="block-content catalog-category">
 <?php
-//echo get_class($categories);
 foreach($categories as $category):
-        //var_dump(get_class_methods($category));
         $cat = $this->getCategoryModel($category->getId());
-        // var_dump($cat->getImageUrl());
-        // var_dump($cat->debug());die;
         ?>
         <span class="category">
-        	<a href="<?php echo $cat->getUrl(); ?>">
-        		<?php if($canshowImg && $cat->getImageUrl()):?>
-        			<img src="<?= $cat->getImageUrl(); ?>" alt="" width="<?=$this->getImageWidth();?>" height="<?=$this->getImageHeight()?>"/>
+        	<a href="<?php echo $block->escapeUrl($cat->getUrl()) ?>">
+        		<?php if($canShowImg && $cat->getImageUrl()):?>
+        			<img src="<?php echo $block->escapeUrl($cat->getImageUrl()) ?>" alt="" width="<?=$this->getImageWidth();?>" height="<?=$this->getImageHeight()?>"/>
         		<?php else:?>
-        		<span class="cat-title"><?php echo $cat->getName(); ?></span>
+        		<span class="cat-title"><?php echo $block->escapeHtml($cat->getName()) ?></span>
         		<?php endif;?>
         	</a>
         </span>
         <?php
 endforeach;
 ?>
-</div
+</div>
