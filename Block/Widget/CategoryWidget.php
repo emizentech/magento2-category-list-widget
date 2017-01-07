@@ -18,7 +18,7 @@ class CategoryWidget extends \Magento\Framework\View\Element\Template implements
     */
     public function __construct(
     \Magento\Framework\View\Element\Template\Context $context,
-    \Magento\Catalog\Model\CategoryFactory $categoryFactory,
+    \Magento\Catalog\Model\CategoryFactory $categoryFactory
     ) {
         $this->_categoryFactory = $categoryFactory;
         parent::__construct($context);
