@@ -14,14 +14,14 @@ $title = $block->getTitle() ? __($block->getTitle()) : 'Categories';
 //echo get_class($categories);
 foreach($categories as $category):
         //var_dump(get_class_methods($category));
-        $cat = $this->getCategorymodel($category->getId());
+        $cat = $this->getCategoryModel($category->getId());
         // var_dump($cat->getImageUrl());
         // var_dump($cat->debug());die;
         ?>
         <span class="category">
         	<a href="<?php echo $cat->getUrl(); ?>">
         		<?php if($canshowImg && $cat->getImageUrl()):?>
-        			<img src="<?= $cat->getImageUrl(); ?>" alt="" width="<?=$this->getImagewidth();?>" height="<?=$this->getImageheight()?>"/>
+        			<img src="<?= $cat->getImageUrl(); ?>" alt="" width="<?=$this->getImageWidth();?>" height="<?=$this->getImageHeight()?>"/>
         		<?php else:?>
         		<span class="cat-title"><?php echo $cat->getName(); ?></span>
         		<?php endif;?>

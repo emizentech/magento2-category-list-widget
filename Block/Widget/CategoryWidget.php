@@ -44,7 +44,7 @@ class CategoryWidget extends \Magento\Framework\View\Element\Template implements
         return $this->_categoryHelper;
     }
     
-    public function getCategorymodel($id)
+    public function getCategoryModel($id)
     {
         $_category = $this->_categoryFactory->create();
         $_category->load($id);
@@ -96,18 +96,18 @@ class CategoryWidget extends \Magento\Framework\View\Element\Template implements
     * Get the widht of product image
     * @return int
     */
-    public function getImagewidth() {
+    public function getImageWidth() {
         if($this->getData('imagewidth')==''){
             return DEFAULT_IMAGE_WIDTH;
         }
         return (int) $this->getData('imagewidth');
     }
-    
+
     /**
     * Get the height of product image
     * @return int
     */
-    public function getImageheight() {
+    public function getImageHeight() {
         if($this->getData('imageheight')==''){
             return DEFAULT_IMAGE_HEIGHT;
         }
