@@ -24,9 +24,6 @@ class CategoryWidget extends \Magento\Framework\View\Element\Template implements
     /**
     * Retrieve current store categories
     *
-    * @param bool|string $sorted
-    * @param bool $asCollection
-    * @param bool $toLoad
     * @return \Magento\Framework\Data\Tree\Node\Collection|\Magento\Catalog\Model\Resource\Category\Collection|array
     */
     public function getCategoryCollection()
@@ -45,7 +42,7 @@ class CategoryWidget extends \Magento\Framework\View\Element\Template implements
     }
     
     /**
-    * Get the widht of product image
+    * Get the width of product image
     * @return int
     */
     public function getImageWidth() {
