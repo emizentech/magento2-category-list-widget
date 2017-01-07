@@ -3,40 +3,25 @@ namespace Emizentech\CategoryWidget\Block\Widget;
 
 class CategoryWidget extends \Magento\Framework\View\Element\Template implements \Magento\Widget\Block\BlockInterface
 {
-    protected $_template = 'widget/categoryWidget.phtml';
-    
     /**
     * Default value for products count that will be shown
     */
     const DEFAULT_IMAGE_WIDTH = 250;
     const DEFAULT_IMAGE_HEIGHT = 250;
-    protected $categoryFlatConfig;
     
-    protected $topMenu;
     protected $_categoryFactory;
     
     /**
     * @param \Magento\Framework\View\Element\Template\Context $context
+    * @param \Magento\Catalog\Model\CategoryFactory $categoryFactory
     * @param array $data
     */
     public function __construct(
-    
     \Magento\Framework\View\Element\Template\Context $context,
-    \Magento\Catalog\Model\Indexer\Category\Flat\State $categoryFlatState,
     \Magento\Catalog\Model\CategoryFactory $categoryFactory,
-    \Magento\Theme\Block\Html\Topmenu $topMenu
     ) {
-        $this->categoryFlatConfig = $categoryFlatState;
-        $this->topMenu = $topMenu;
         $this->_categoryFactory = $categoryFactory;
         parent::__construct($context);
-    }
-    
-    public function getCategoryModel($id)
-    {
-        $_category = $this->_categoryFactory->create();
-        $_category->load($id);
-        return $_category;
     }
 
     /**
@@ -50,32 +35,16 @@ class CategoryWidget extends \Magento\Framework\View\Element\Template implements
     public function getCategoryCollection()
     {
         $category = $this->_categoryFactory->create();
-        if($this->getData('parentcat') > 0){
-            $rootCat = $this->getData('parentcat');
-            $category->load($rootCat);
-        }
         
-        if(!$category->getId()){
-            $rootCat = $this->_storeManager->getStore()->getRootCategoryId();
-            $category->load($rootCat);
-        }
-        $storecats = $category->getChildrenCategories();
-        $storecats->addAttributeToSelect('image');
-        return $storecats;
-    }
-    
-    /**
-    * Retrieve child store categories
-    *
-    */
-    public function getChildCategories($category)
-    {
-        if ($this->categoryFlatConfig->isFlatEnabled() && $category->getUseFlatResource()) {
-            $subcategories = (array)$category->getChildrenNodes();
-        } else {
-            $subcategories = $category->getChildren();
-        }
-        return $subcategories;
+        $rootCatID = NULL;
+        if($this->getData('parentcat') > 0)
+            $rootCatID = $this->getData('parentcat'); 
+        else
+            $rootCatID = $this->_storeManager->getStore()->getRootCategoryId();
+
+        $category->load($rootCatID);
+        $childCategories = $category->getChildrenCategories();
+        return $childCategories;
     }
     
     /**
@@ -102,7 +71,7 @@ class CategoryWidget extends \Magento\Framework\View\Element\Template implements
     
     public function canShowImage(){
         if($this->getData('image') == 'image')
-        return true;
+            return true;
         elseif($this->getData('image') == 'no-image')
             return false;
     }
