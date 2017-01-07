@@ -3,7 +3,7 @@ namespace Emizentech\CategoryWidget\Block\Widget;
 
 class CategoryWidget extends \Magento\Framework\View\Element\Template implements \Magento\Widget\Block\BlockInterface
 {
-    protected $_template = 'widget/categorywidget.phtml';
+    protected $_template = 'widget/categoryWidget.phtml';
     
     /**
     * Default value for products count that will be shown
