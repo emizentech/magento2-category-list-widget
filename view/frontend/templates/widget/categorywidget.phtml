@@ -9,16 +9,13 @@
 </div>
 <?php endif ?>
 <div class="block-content catalog-category">
-<?php
-foreach($categories as $category):
-        $cat = $this->getCategoryModel($category->getId());
-        ?>
+<?php foreach($categories as $category):?>
         <span class="category">
-        	<a href="<?php echo $block->escapeUrl($cat->getUrl()) ?>">
-        		<?php if($canShowImg && $cat->getImageUrl()):?>
+        	<a href="<?php echo $block->escapeUrl($category->getUrl()) ?>">
+        		<?php if($canShowImg && $category->getImageUrl()):?>
         			<img src="<?php echo $block->escapeUrl($cat->getImageUrl()) ?>" alt="" width="<?=$this->getImageWidth();?>" height="<?=$this->getImageHeight()?>"/>
         		<?php else:?>
-        		<span class="cat-title"><?php echo $block->escapeHtml($cat->getName()) ?></span>
+        		<span class="cat-title"><?php echo $block->escapeHtml($category->getName()) ?></span>
         		<?php endif;?>
         	</a>
         </span>
