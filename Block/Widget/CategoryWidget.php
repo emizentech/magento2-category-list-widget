@@ -6,6 +6,9 @@ class CategoryWidget extends \Magento\Framework\View\Element\Template implements
     const DEFAULT_IMAGE_WIDTH = 250;
     const DEFAULT_IMAGE_HEIGHT = 250;
     
+    /**
+    * \Magento\Catalog\Model\CategoryFactory $categoryFactory
+    */
     protected $_categoryFactory;
     
     /**
