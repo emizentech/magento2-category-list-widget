@@ -16,6 +16,17 @@
                     </option>
                 </options>
             </parameter>
+            <parameter name="show_header" xsi:type="select" required="true" visible="true">
+                <label translate="true">Show Category name as header</label>
+                <options>
+                    <option name="default" value="0" selected="true">
+                        <label translate="true">No</label>
+                    </option>
+                    <option name="yes" value="1" selected="true">
+                        <label translate="true">Yes</label>
+                    </option>
+                </options>
+            </parameter>			
 			<parameter name="imagewidth" xsi:type="text"  visible="true" sort_order="2">
 				<label translate="true">Image Width</label>
 				<description translate="true">Enter Image width Ex. 250 , do not suffix with px</description>
