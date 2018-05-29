@@ -82,7 +82,7 @@ class CategoryWidget extends \Magento\Framework\View\Element\Template implements
 
         return $this->getRootCategory()->getName();
     }
-        
+
     /**
     * Get the width of product image
     * @return int
@@ -111,4 +111,9 @@ class CategoryWidget extends \Magento\Framework\View\Element\Template implements
         elseif($this->getData('image') == 'no-image')
             return false;
     }
+
+    public function canShowCategoryName()
+    {
+        return in_array($this->getDisplayStyle(), ['no-image','image-and-text']);
+    }    
 }
