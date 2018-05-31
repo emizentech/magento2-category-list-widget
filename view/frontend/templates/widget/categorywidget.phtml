@@ -1,5 +1,5 @@
 <?php
-    $categories = $block->getCategoryCollection();
+    $categories = $block->getCategoryCollection();    
     $title = $block->getTitle();
 ?>
 <?php if ($title):?>
@@ -10,7 +10,13 @@
 <div class="block-content catalog-category">
     <?php foreach($categories as $category):?>
         <span class="category">
-            <a href="<?php echo $block->escapeUrl($category->getUrl()) ?>">
+        <?php
+            $link = $category->getUrl();
+            if ($block->categoryIsPage($category->getId())) {
+                $link = substr($link,0,-5);
+            }
+        ?>
+            <a href="<?php echo $block->escapeUrl($link) ?>">
                 <?php if($block->canShowImage() && $category->getImageUrl()):?>
                     <img src="<?php echo $block->escapeUrl($category->getImageUrl()) ?>" alt="" width="<?=$block->getImageWidth();?>" height="<?=$block->getImageHeight()?>"/>
                 <?php endif;?>
