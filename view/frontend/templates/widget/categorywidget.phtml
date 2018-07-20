@@ -9,7 +9,7 @@
 <?php endif ?>
 <div class="block-content catalog-category">
     <?php foreach($categories as $category):?>
-        <span class="category">
+        <div class="category" style="display: inline-block;text-align: center;width:30%">
         <?php
             $link = $category->getUrl();
             if ($block->categoryIsPage($category->getId())) {
@@ -21,9 +21,9 @@
                     <img src="<?php echo $block->escapeUrl($category->getImageUrl()) ?>" alt="" width="<?=$block->getImageWidth();?>" height="<?=$block->getImageHeight()?>"/>
                 <?php endif;?>
                 <?php if($block->canShowCategoryName()):?>
-                    <span class="cat-title"><?php echo $block->escapeHtml($category->getName()) ?></span>
+                    <p class="cat-title"><?php echo $block->escapeHtml($category->getName()) ?></p>
                 <?php endif;?>
             </a>
-        </span>
+        </div>
     <?php endforeach; ?>
 </div>
