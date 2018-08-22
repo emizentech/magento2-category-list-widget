@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="catalog_category_flat_loadnodes_before">
+        <observer name="add_image_to_collection" instance="Emizentech\CategoryWidget\Observer\AddImage" />
+    </event>
+</config>
