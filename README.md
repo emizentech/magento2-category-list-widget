@@ -1,54 +1,57 @@
-# magento2-category-list-widget
+# Category List Widget for Magento 2
 
-#Features
-<ul>
-<li>Add Category List Any Where</li>
-<li>Automatic Pick Default Store Category as Parent</li>
-<li>Category Image into List</li>
-<li>Can Manage Image Size</li>
-<li>Can Assign Custom Parent Category</li>
-</ul>
+## Features
+* Display a list of store categories, anywhere you can place a widget.
+* Optionally, displays images for categories
+* Size of images can be adjusted from the widget settings in the admin panel.
+* By default, shows the child categories under the store's root category
+* Can be configured to display any category's children
+* Sub-Categories can be rendered as pages.
 
-<h2>Composer Installation Instructions</h2>
-Add GIT Repository to composer
-<pre>
-composer config repositories.emizentech-magento2-category-widget vcs https://github.com/emizentech/magento2-category-list-widget/
-</pre>
+# Usage
+Most of the functionalty is self-evident in Widget Options page when inserting the widget. Below is any further useful tips.
 
-After that, need to install this module as follows:
-<pre>
-  composer require magento/magento-composer-installer
-  composer require emizentech/categorywidget
-</pre>
+### Parent Category Id (optional)
+Set this to the Id of the catergory whose children you want to list. This id can be found at the top of the Category management page.
 
+### Category as Page (optional)
+By default, the list of categories rendered link to a category page that shows the products within that category. Sometimes I can be useful to link to a page that shows the sub-categories rather than the products (e.g. The "pizzas" category shows a list of pizza categories rather than the pizzas themselves).
 
-<br/>
-<h2> Mannual Installation Instructions</h2>
-go to Magento2Project root dir 
-create following Directory Structure :<br/>
-<strong>/Magento2Project/app/code/Emizentech/CategoryWidget</strong>
-you can also create by following command:
-<pre>
-cd /Magento2Project
-mkdir app/code/Emizentech
-mkdir app/code/Emizentech/CategoryWidget
-</pre>
+Adding a comma separated list of ant category id's that should be rendered as a page will create a link to a page name that is the same as the category name - you should then create that page in the CMS and you can add another widget that renders the products themselves (using the category id as above).
 
+# Installation
 
+## Composer Installation Instructions
+First you must add the GIT Repository to composer by running this command
+```
+composer config repositories.emizentech-magento2-category-widget vcs https://github.com/ParamountVentures/magento2-category-list-widget/
+```
 
-<h3> Enable Emizentech/CategoryWidget Module</h3>
-to Enable this module you need to follow these steps:
+Then, to install the module, run these commands
+```
+composer require magento/magento-composer-installer
+composer require emizentech/categorywidget
+```
 
-<ul>
-<li>
-<strong>Enable the Module</strong>
-<pre>bin/magento module:enable Emizentech_CategoryWidget</pre></li>
-<li>
-<strong>Run Upgrade Setup</strong>
-<pre>bin/magento setup:upgrade</pre></li>
-<li>
-<strong>Re-Compile (in-case you have compilation enabled)</strong>
-	<pre>bin/magento setup:di:compile</pre>
-</li>
-</ul>
+## Manual Installation Instructions
+First, create the directory structure for the module:
+```
+mkdir -p Magento2Project/app/code/Emizentech/CategoryWidget
+```
+*In our example, the Magento 2 files are stored in `Magento2Project`. Your Magento 2 installation path is probably different, so be sure to replace `Magento2Project` with your own path.*
 
+### Enable Emizentech/CategoryWidget Module
+To Enable this module you need to follow these steps:
+
+1. **Enable the Module**
+```
+bin/magento module:enable Emizentech_CategoryWidget
+```
+2. **Run Upgrade Setup**
+```
+bin/magento setup:upgrade
+```
+3. **Re-Compile** (if you have compilation enabled)
+```
+bin/magento setup:di:compile
+```

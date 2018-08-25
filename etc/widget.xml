@@ -1,35 +1,53 @@
-<?xml version="1.0" encoding="UTF-8"?> 
+<?xml version="1.0" encoding="UTF-8"?>
 <widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
-	<widget id="emizentech_categorywidget" class="Emizentech\CategoryWidget\Block\Widget\CategoryWidget">
-		<label translate="true">Category List Widget</label>
-		<description>Store Default 1st level Category List Widget</description>
-		<parameters>
-			<parameter name="image" xsi:type="select" required="true" visible="true">
-                	<label translate="true">Image Type</label>
+    <widget id="emizentech_categorywidget" class="Emizentech\CategoryWidget\Block\Widget\CategoryWidget">
+        <label translate="true">Category List Widget</label>
+        <description>Displays a list of a specified category's children and their names/images.</description>
+        <parameters>
+            <parameter name="image" xsi:type="select" required="true" visible="true">
+                <label translate="true">Display Style</label>
                 <options>
                     <option name="default" value="no-image" selected="true">
-                        <label translate="true">No Image</label>
+                        <label translate="true">Text Only; No Image</label>
                     </option>
                     <option name="image" value="image">
-                        <label translate="true">With Image</label>
+                        <label translate="true">Image Only; No Text</label>
+                    </option>
+                    <option name="image-and-text" value="image-and-text">
+                        <label translate="true">Image and Text</label>
                     </option>
                 </options>
             </parameter>
-			<parameter name="imagewidth" xsi:type="text"  visible="true" sort_order="2">
-				<label translate="true">Image Width</label>
-				<description translate="true">Enter Image width Ex. 250 , do not suffix with px</description>
-                		<value>250</value>
-			</parameter>
-			<parameter name="imageheight" xsi:type="text"  visible="true" sort_order="3">
-				<label translate="true">Image Height</label>
-				<description translate="true">Enter Image Height Ex. 250 , do not suffix with px</description>
-                		<value>250</value>
-			</parameter>
-			<parameter name="parentcat" xsi:type="text"  visible="true" sort_order="10">
-				<label translate="true">Specific Parent Category ID</label>
-				<description translate="true">Default Category of Current Store will be used in case of Blank</description>
-			</parameter>
-		</parameters>
-	</widget>
+            <parameter name="show_header" xsi:type="select" required="true" visible="true">
+                <label translate="true">Show Category name as header</label>
+                <options>
+                    <option name="default" value="0" selected="true">
+                        <label translate="true">No</label>
+                    </option>
+                    <option name="yes" value="1" selected="true">
+                        <label translate="true">Yes</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="imagewidth" xsi:type="text"  visible="true" sort_order="2">
+                <label translate="true">Image Width</label>
+                <description translate="true">Enter Image width Ex. 250 , do not suffix with px</description>
+                <value>250</value>
+            </parameter>
+            <parameter name="imageheight" xsi:type="text"  visible="true" sort_order="3">
+                <label translate="true">Image Height</label>
+                <description translate="true">Enter Image Height Ex. 250 , do not suffix with px</description>
+                <value>250</value>
+            </parameter>
+            <parameter name="parentcat" xsi:type="text"  visible="true" sort_order="10">
+                <label translate="true">Specific Parent Category ID</label>
+                <description translate="true">Default Category of Current Store will be used in case of Blank</description>
+            </parameter>
+            <parameter name="categoriesaspage" xsi:type="text"  visible="true" sort_order="11">
+                <label translate="true">Category as Page</label>
+                <description translate="true">Sub-Category Page. A comma separated Category Ids - link will be to [pagename] rather than [pagename.html]</description>
+            </parameter>
+        </parameters>
+    </widget>
 </widgets>
