@@ -2,7 +2,7 @@
     "name": "emizentech/categorywidget",
     "description": "Emizentech Category List Widget",
     "require": {
-        "php": "> 7.0"
+        "php": ">= 7.2"
     },
     "type": "magento2-module",
     "version": "1.0.0",
