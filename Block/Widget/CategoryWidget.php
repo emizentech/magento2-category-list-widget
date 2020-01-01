@@ -42,7 +42,7 @@ class CategoryWidget extends \Magento\Framework\View\Element\Template implements
             $rootCatID = $this->_storeManager->getStore()->getRootCategoryId();
 
         $category->load($rootCatID);
-        $childCategories = $category->getChildrenCategories();
+        $childCategories = $category->getChildrenCategories()->addAttributeToSelect('image');
         return $childCategories;
     }
     
