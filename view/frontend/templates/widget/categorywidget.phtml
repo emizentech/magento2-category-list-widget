@@ -8,9 +8,9 @@
 	<strong><?php echo $block->escapeHtml($title) ?></strong>
 </div>
 <?php endif ?>
-<div class="block-content catalog-category">
+<ul class="block-content catalog-category">
 <?php foreach($categories as $category):?>
-        <span class="category">
+        <li class="category">
         	<a href="<?php echo $block->escapeUrl($category->getUrl()) ?>">
         		<?php if($canShowImg && $category->getImageUrl()):?>
         			<img src="<?php echo $block->escapeUrl($category->getImageUrl()) ?>" alt="" width="<?=$this->getImageWidth();?>" height="<?=$this->getImageHeight()?>"/>
@@ -18,8 +18,8 @@
         		<span class="cat-title"><?php echo $block->escapeHtml($category->getName()) ?></span>
         		<?php endif;?>
         	</a>
-        </span>
+        </li>
         <?php
 endforeach;
 ?>
-</div>
+</ul>
