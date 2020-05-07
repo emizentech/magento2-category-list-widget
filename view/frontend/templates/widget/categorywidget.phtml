@@ -1,25 +1,26 @@
 <?php
-	$categories = $this->getCategoryCollection();
-	$canShowImg = $this->canShowImage();
-	$title = $block->getTitle() ? __($block->getTitle()) : 'Categories';
+$categories = $this->getCategoryCollection();
+$canShowImg = $this->canShowImage();
+$title = $block->getTitle() ? __($block->getTitle()) : '';
 ?>
-<?php if ($title):?>
-<div class="block-title">
-	<strong><?php echo $block->escapeHtml($title) ?></strong>
-</div>
+<?php if ($title): ?>
+    <div class="block-title">
+        <strong><?php echo $block->escapeHtml($title) ?></strong>
+    </div>
 <?php endif ?>
 <ul class="block-content catalog-category">
-<?php foreach($categories as $category):?>
+    <?php foreach ($categories as $category): ?>
         <li class="category">
-        	<a href="<?php echo $block->escapeUrl($category->getUrl()) ?>">
-        		<?php if($canShowImg && $category->getImageUrl()):?>
-        			<img src="<?php echo $block->escapeUrl($category->getImageUrl()) ?>" alt="" width="<?=$this->getImageWidth();?>" height="<?=$this->getImageHeight()?>"/>
-        		<?php else:?>
-        		<span class="cat-title"><?php echo $block->escapeHtml($category->getName()) ?></span>
-        		<?php endif;?>
-        	</a>
+            <a href="<?php echo $block->escapeUrl($category->getUrl()) ?>">
+                <?php if ($canShowImg && $category->getImageUrl()): ?>
+                    <img src="<?php echo $block->escapeUrl($category->getImageUrl()) ?>" alt=""
+                         width="<?= $this->getImageWidth(); ?>" height="<?= $this->getImageHeight() ?>"/>
+                <?php else: ?>
+                    <span class="cat-title"><?php echo $block->escapeHtml($category->getName()) ?></span>
+                <?php endif; ?>
+            </a>
         </li>
-        <?php
-endforeach;
-?>
+    <?php
+    endforeach;
+    ?>
 </ul>
