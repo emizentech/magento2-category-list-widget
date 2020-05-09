@@ -2,8 +2,6 @@
 $categories = $this->getCategoryCollection();
 $canShowImg = $this->canShowImage();
 $title = $block->getTitle() ? __($block->getTitle()) : '';
-
-
 ?>
 <?php if ($title): ?>
     <div class="block-title">
@@ -11,8 +9,7 @@ $title = $block->getTitle() ? __($block->getTitle()) : '';
     </div>
 <?php endif ?>
 <ul class="block-content catalog-category">
-    <?php foreach ($categories as $key => $category):
-        ?>
+    <?php foreach ($categories as $key => $category): ?>
         <li class="category">
             <a href="<?php echo $block->escapeUrl($category->getUrl()) ?>">
                 <?php if ($canShowImg && $category->getImageUrl()): ?>
