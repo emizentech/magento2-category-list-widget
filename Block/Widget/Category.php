@@ -132,7 +132,6 @@ class Category extends \Magento\Framework\View\Element\Template implements \Mage
         if ($currentCategoryId) {
             $categories = $this->getCategoryCollection();
             $categoriesIds = $categories->getAllIds();
-            print_r($categoriesIds);
             $countCategories = count($categoriesIds);
             if ($currentCategoryId && !empty($categoriesIds)) {
                 $currentIndex = array_search($currentCategoryId, $categoriesIds);
