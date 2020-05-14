@@ -38,14 +38,10 @@ class Category extends \Magento\Framework\View\Element\Template implements \Mage
      *
      * @return \Magento\Framework\Data\Tree\Node\Collection|\Magento\Catalog\Model\Resource\Category\Collection|array
      */
-    public function getCategoryCollection()
+    public function getCategoryCollection($categoryId = null)
     {
-        $category = $this->_categoryFactory->create();
-
         $rootCatID = NULL;
-        if ($this->getData('parentcat') > 0) {
-            $rootCatID = $this->getData('parentcat');
-        } else {
+        if ($categoryId) {
             $currentCategoryId = $this->getCurrentCategoryId();
             $currentCategory = $this->getCategory($currentCategoryId);
             $parentCategory = $currentCategory->getParentCategory();
@@ -54,11 +50,29 @@ class Category extends \Magento\Framework\View\Element\Template implements \Mage
             } else {
                 $rootCatID = $this->_storeManager->getStore()->getRootCategoryId();
             }
+        } else {
+            if ($this->getData('parentcat') > 0) {
+                $rootCatID = $this->getData('parentcat');
+            } else {
+                $rootCatID = $this->getCurrentCategoryId();
+            }
         }
 
-        $category->load($rootCatID);
-        $childCategories = $category->getChildrenCategories()->addAttributeToSelect('image');
-        return $childCategories;
+        $category = $this->getCategory($rootCatID);
+        if ($category) {
+            $childCategories = $category->getChildrenCategories();
+            if (is_object($childCategories)) {
+                $childCategories->addAttributeToSelect('image');
+            } else if (is_array($childCategories)) {
+                foreach ($childCategories as $key => $cc) {
+                    $childCategories[$key]->getResourceCollection()->addAttributeToSelect('image');
+                }
+            } else {
+                throw new \Exception('Could not process ' . gettype($childCategories));
+            }
+            return $childCategories;
+        }
+        return null;
     }
 
     /**
@@ -130,8 +144,15 @@ class Category extends \Magento\Framework\View\Element\Template implements \Mage
     {
         $currentCategoryId = $this->getCurrentCategoryId();
         if ($currentCategoryId) {
-            $categories = $this->getCategoryCollection();
-            $categoriesIds = $categories->getAllIds();
+            $categories = $this->getCategoryCollection($currentCategoryId);
+            $categoriesIds = [];
+            if (is_object($categories)) {
+                $categoriesIds = $categories->getAllIds();
+            } else if (is_array($categories)) {
+                $categoriesIds = array_keys($categories);
+            } else {
+                throw new \Exception('Could not process ' . gettype($categories));
+            }
             $countCategories = count($categoriesIds);
             if ($currentCategoryId && !empty($categoriesIds)) {
                 $currentIndex = array_search($currentCategoryId, $categoriesIds);
