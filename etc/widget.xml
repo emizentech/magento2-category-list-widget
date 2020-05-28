@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
-    <widget id="emizentech_categorywidget" class="Emizentech\CategoryWidget\Block\Widget\CategoryWidget">
+    <widget id="harriswebworks_categorywidget" class="Harriswebworks\CategoryWidget\Block\Widget\CategoryWidget">
         <label translate="true">Category List Widget</label>
         <description>Store Default 1st level Category List Widget</description>
         <parameters>
@@ -33,12 +33,12 @@
             </parameter>
         </parameters>
     </widget>
-    <widget id="emizentech_previouscategorywidget"
-            class="Emizentech\CategoryWidget\Block\Widget\PreviousCategoryWidget">
+    <widget id="harriswebworks_previouscategorywidget"
+            class="Harriswebworks\CategoryWidget\Block\Widget\PreviousCategoryWidget">
         <label translate="true">Previous Category Widget</label>
         <description>Previous Category Link</description>
     </widget>
-    <widget id="emizentech_nextcategorywidget" class="Emizentech\CategoryWidget\Block\Widget\NextCategoryWidget">
+    <widget id="harriswebworks_nextcategorywidget" class="Harriswebworks\CategoryWidget\Block\Widget\NextCategoryWidget">
         <label translate="true">Next Category Widget</label>
         <description>Next Category Link</description>
     </widget>

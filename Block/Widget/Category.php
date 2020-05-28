@@ -1,6 +1,6 @@
 <?php
 
-namespace Emizentech\CategoryWidget\Block\Widget;
+namespace Harriswebworks\CategoryWidget\Block\Widget;
 
 class Category extends \Magento\Framework\View\Element\Template implements \Magento\Widget\Block\BlockInterface
 {

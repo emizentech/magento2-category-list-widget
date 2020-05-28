@@ -1,5 +1,5 @@
 <?php
-namespace Emizentech\CategoryWidget\Block\Widget;
+namespace Harriswebworks\CategoryWidget\Block\Widget;
 
 class CategoryWidget extends Category
 {

@@ -1,6 +1,6 @@
 {
-    "name": "emizentech/categorywidget",
-    "description": "Emizentech Category List Widget",
+    "name": "harriswebworks/categorywidget",
+    "description": "Harriswebworks Category List Widget",
     "require": {
         "php": "~7.1.3||~7.2.0||~7.3.0"
     },
@@ -12,7 +12,7 @@
     "autoload": {
         "files": [ "registration.php" ],
         "psr-4": {
-            "Emizentech\\CategoryWidget\\": ""
+            "Harriswebworks\\CategoryWidget\\": ""
         }
     }
 }
