@@ -1,5 +1,5 @@
 <?php
-namespace Emizentech\CategoryWidget\Observer;
+namespace Harriswebworks\CategoryWidget\Observer;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;

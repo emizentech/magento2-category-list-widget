@@ -1,0 +1,15 @@
+<?php
+$category = $block->getNextCategory();
+?>
+<?php if ($category): ?>
+    <ul class="block-content catalog-category pager" aria-labelledby="paging-label">
+        <li class="catalog-category-next">
+            <a class="action next"
+               href="<?= $block->escapeUrl($category->getUrl()) ?>"
+               title="<?= $block->escapeHtmlAttr(__($category->getName())) ?>">
+                <span class="label"><?= $block->escapeHtml(__('Page')) ?></span>
+                <span><?= $block->escapeHtml(__('Next')) ?></span>
+            </a>
+        </li>
+    </ul>
+<?php endif; ?>

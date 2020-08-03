@@ -12,13 +12,13 @@
 <h2>Composer Installation Instructions</h2>
 Add GIT Repository to composer
 <pre>
-composer config repositories.emizentech-magento2-category-widget vcs https://github.com/emizentech/magento2-category-list-widget/
+composer config repositories.harriswebworks-magento2-category-widget vcs https://github.com/harriswebworks/magento2-category-list-widget/
 </pre>
 
 After that, need to install this module as follows:
 <pre>
   composer require magento/magento-composer-installer
-  composer require emizentech/categorywidget
+  composer require harriswebworks/categorywidget
 </pre>
 
 
@@ -26,23 +26,23 @@ After that, need to install this module as follows:
 <h2> Mannual Installation Instructions</h2>
 go to Magento2Project root dir 
 create following Directory Structure :<br/>
-<strong>/Magento2Project/app/code/Emizentech/CategoryWidget</strong>
+<strong>/Magento2Project/app/code/Harriswebworks/CategoryWidget</strong>
 you can also create by following command:
 <pre>
 cd /Magento2Project
-mkdir app/code/Emizentech
-mkdir app/code/Emizentech/CategoryWidget
+mkdir app/code/Harriswebworks
+mkdir app/code/Harriswebworks/CategoryWidget
 </pre>
 
 
 
-<h3> Enable Emizentech/CategoryWidget Module</h3>
+<h3> Enable Harriswebworks/CategoryWidget Module</h3>
 to Enable this module you need to follow these steps:
 
 <ul>
 <li>
 <strong>Enable the Module</strong>
-<pre>bin/magento module:enable Emizentech_CategoryWidget</pre></li>
+<pre>bin/magento module:enable Harriswebworks_CategoryWidget</pre></li>
 <li>
 <strong>Run Upgrade Setup</strong>
 <pre>bin/magento setup:upgrade</pre></li>

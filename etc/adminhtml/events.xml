@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+<!--    <event name="catalog_product_to_website_change">-->
+<!--        <observer name="catalog_product_to_website_change" instance="Magento\CatalogUrlRewrite\Observer\ProductToWebsiteChangeObserver"/>-->
+<!--    </event>-->
+<!--    <event name="catalog_category_prepare_save">-->
+<!--        <observer name="harriswebworks_catalog_category_prepare_save"-->
+<!--                  instance="Harriswebworks\CategoryWidget\Observer\CatalogCategoryPrepareSaveObserver"/>-->
+<!--    </event>-->
+<!--    <event name="catalog_category_save_after">-->
+<!--        <observer name="harriswebworks_catalog_category_save_after"-->
+<!--                  instance="Harriswebworks\CategoryWidget\Observer\CatalogCategorySaveAfterObserver"/>-->
+<!--    </event>-->
+<!--    <event name="catalog_product_import_bunch_save_after">-->
+<!--        <observer name="harriswebworks_catalog_product_import_bunch_save_after"-->
+<!--                  instance="Harriswebworks\CategoryWidget\Observer\AfterImportDataObserver"/>-->
+<!--    </event>-->
+<!--    <event name="catalog_category_save_before">-->
+<!--        <observer name="harriswebworks_catalog_category_save_before"-->
+<!--                  instance="Harriswebworks\CategoryWidget\Observer\CategoryUrlPathAutogeneratorObserver"/>-->
+<!--    </event>-->
+<!--    <event name="catalog_category_move_after">-->
+<!--        <observer name="harriswebworks_catalog_category_move_after"-->
+<!--                  instance="Harriswebworks\CategoryWidget\Observer\CategoryProcessUrlRewriteMovingObserver"/>-->
+<!--    </event>-->
+
+<!--    <event name="category_prepare_ajax_response">-->
+<!--        <observer name="harriswebworks_category_prepare_ajax_response"-->
+<!--                  instance="Harriswebworks\CategoryWidget\Observer\CatalogCategoryAddOrEditObserver"/>-->
+<!--    </event>-->
+<!--    <event name="catalog_controller_category_delete">-->
+<!--        <observer name="harriswebworks_catalog_controller_category_delete"-->
+<!--                  instance="Harriswebworks\CategoryWidget\Observer\CatalogCategoryDeleteObserver"/>-->
+<!--    </event>-->
+<!--    <event name="catalog_category_move_before">-->
+<!--        <observer name="harriswebworks_catalog_category_move_before"-->
+<!--                  instance="Harriswebworks\CategoryWidget\Observer\CatalogCategoryMoveBeforeObserver"/>-->
+<!--    </event>-->
+<!--    <event name="category_move">-->
+<!--        <observer name="harriswebworks_category_move"-->
+<!--                  instance="Harriswebworks\CategoryWidget\Observer\CatalogCategoryMoveObserver"/>-->
+<!--    </event>-->
+</config>
