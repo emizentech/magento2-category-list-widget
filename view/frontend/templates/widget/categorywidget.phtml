@@ -1,25 +1,36 @@
 <?php
-	$categories = $this->getCategoryCollection();
-	$canShowImg = $this->canShowImage();
-	$title = $block->getTitle() ? __($block->getTitle()) : 'Categories';
+/** @var \Magento\Framework\View\Element\Template $block */
+$categories = $block->getCategoryCollection();
+
+$canShowImg = $block->canShowImage();
+$title = $block->getTitle() ? __($block->getTitle()) : __('Categories');
 ?>
-<?php if ($title):?>
-<div class="block-title">
-	<strong><?php echo $block->escapeHtml($title) ?></strong>
-</div>
-<?php endif ?>
+<?php if ($title): ?>
+    <div class="block-title">
+        <strong><?= $block->escapeHtml($title) ?></strong>
+    </div>
+<?php endif; ?>
 <div class="block-content catalog-category">
-<?php foreach($categories as $category):?>
+    <?php foreach ($categories as $category):?>
+        <?php 
+        /** @var \Magento\Catalog\Model\Category $category */
+        $categoryUrl = $block->escapeUrl($category->getUrl());
+        $categoryName = $block->escapeHtml($category->getName());
+        $categoryImageUrl = $canShowImg && $category->getImageUrl() ? $block->escapeUrl($category->getImageUrl()) : null;
+        ?>
         <span class="category">
-        	<a href="<?php echo $block->escapeUrl($category->getUrl()) ?>">
-        		<?php if($canShowImg && $category->getImageUrl()):?>
-        			<img src="<?php echo $block->escapeUrl($category->getImageUrl()) ?>" alt="" width="<?=$this->getImageWidth();?>" height="<?=$this->getImageHeight()?>"/>
-        		<?php else:?>
-        		<span class="cat-title"><?php echo $block->escapeHtml($category->getName()) ?></span>
-        		<?php endif;?>
-        	</a>
+            <a href="<?= $categoryUrl ?>">
+                <?php if ($categoryImageUrl): ?>
+                    <img 
+                        src="<?= $categoryImageUrl ?>" 
+                        alt="<?= $categoryName ?>" 
+                        width="<?= $block->getImageWidth(); ?>" 
+                        height="<?= $block->getImageHeight(); ?>"
+                    />
+                <?php else: ?>
+                    <span class="category-title"><?= $categoryName ?></span>
+                <?php endif; ?>
+            </a>
         </span>
-        <?php
-endforeach;
-?>
+    <?php endforeach; ?>
 </div>

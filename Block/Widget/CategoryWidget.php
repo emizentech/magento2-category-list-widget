@@ -1,77 +1,80 @@
 <?php
 namespace Emizentech\CategoryWidget\Block\Widget;
 
-class CategoryWidget extends \Magento\Framework\View\Element\Template implements \Magento\Widget\Block\BlockInterface
+use Magento\Framework\View\Element\Template;
+use Magento\Widget\Block\BlockInterface;
+use Magento\Catalog\Model\CategoryFactory;
+
+class CategoryWidget extends Template implements BlockInterface
 {
     protected $_template = 'widget/categorywidget.phtml';
 
-    const DEFAULT_IMAGE_WIDTH = 250;
-    const DEFAULT_IMAGE_HEIGHT = 250;
-    
+    private const DEFAULT_IMAGE_WIDTH = 250;
+
+    private const DEFAULT_IMAGE_HEIGHT = 250;
     /**
-    * \Magento\Catalog\Model\CategoryFactory $categoryFactory
-    */
-    protected $_categoryFactory;
-    
+     * @var CategoryFactory
+     */
+
+    protected CategoryFactory $categoryFactory;
     /**
-    * @param \Magento\Framework\View\Element\Template\Context $context
-    * @param \Magento\Catalog\Model\CategoryFactory $categoryFactory
-    * @param array $data
-    */
+     * @param Template\Context $context
+     * @param CategoryFactory $categoryFactory
+     * @param array $data
+     */
+    
     public function __construct(
-    \Magento\Framework\View\Element\Template\Context $context,
-    \Magento\Catalog\Model\CategoryFactory $categoryFactory
+        Template\Context $context,
+        CategoryFactory $categoryFactory,
+        array $data = []
     ) {
-        $this->_categoryFactory = $categoryFactory;
-        parent::__construct($context);
+        $this->categoryFactory = $categoryFactory;
+        parent::__construct($context, $data);
     }
 
     /**
-    * Retrieve current store categories
-    *
-    * @return \Magento\Framework\Data\Tree\Node\Collection|\Magento\Catalog\Model\Resource\Category\Collection|array
-    */
+     * Retrieve current store categories
+     *
+     * @return \Magento\Catalog\Model\ResourceModel\Category\Collection
+     */
     public function getCategoryCollection()
     {
-        $category = $this->_categoryFactory->create();
-        
-        $rootCatID = NULL;
-        if($this->getData('parentcat') > 0)
-            $rootCatID = $this->getData('parentcat'); 
-        else
-            $rootCatID = $this->_storeManager->getStore()->getRootCategoryId();
+        $rootCatID = $this->getData('parentcat') ?: $this->_storeManager->getStore()->getRootCategoryId();
 
-        $category->load($rootCatID);
-        $childCategories = $category->getChildrenCategories()->addAttributeToSelect('image');
+        $category = $this->categoryFactory->create()->load($rootCatID);
+        $childCategories = $category->getChildrenCategories();
+        $childCategories->addAttributeToSelect(['image', 'name', 'url_key']);
+        
         return $childCategories;
     }
-    
+
     /**
-    * Get the width of product image
-    * @return int
-    */
-    public function getImageWidth() {
-        if($this->getData('imagewidth')==''){
-            return DEFAULT_IMAGE_WIDTH;
-        }
-        return (int) $this->getData('imagewidth');
+     * Get the width of the category image
+     *
+     * @return int
+     */
+    public function getImageWidth(): int
+    {
+        return $this->getData('imagewidth') ? (int) $this->getData('imagewidth') : self::DEFAULT_IMAGE_WIDTH;
     }
 
     /**
-    * Get the height of product image
-    * @return int
-    */
-    public function getImageHeight() {
-        if($this->getData('imageheight')==''){
-            return DEFAULT_IMAGE_HEIGHT;
-        }
-        return (int) $this->getData('imageheight');
+     * Get the height of the category image
+     *
+     * @return int
+     */
+    public function getImageHeight(): int
+    {
+        return $this->getData('imageheight') ? (int) $this->getData('imageheight') : self::DEFAULT_IMAGE_HEIGHT;
     }
-    
-    public function canShowImage(){
-        if($this->getData('image') == 'image')
-            return true;
-        elseif($this->getData('image') == 'no-image')
-            return false;
+
+    /**
+     * Check if images can be displayed
+     *
+     * @return bool
+     */
+    public function canShowImage(): bool
+    {
+        return $this->getData('image') === 'image';
     }
 }

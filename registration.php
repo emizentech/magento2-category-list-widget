@@ -1,6 +1,9 @@
 <?php
-\Magento\Framework\Component\ComponentRegistrar::register(
-    \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'Emizentech_CategoryWidget',
-    __DIR__
-);
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+use Magento\Framework\Component\ComponentRegistrar;
+
+ComponentRegistrar::register(ComponentRegistrar::MODULE, 'Emizentech_CategoryWidget', __DIR__);
